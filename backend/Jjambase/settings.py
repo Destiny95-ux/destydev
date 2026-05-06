@@ -139,7 +139,7 @@ REST_FRAMEWORK = {
     )
 }
 
-ALLOWED_HOSTS = ['your-app.onrender.com']
+ALLOWED_HOSTS = ['destydev.onrender.com']
 
 import os
 
