@@ -4,11 +4,6 @@ from .models import Song, ArtistProfile, Download
 from .serializers import SongSerializer, ArtistSerializer, DownloadSerializer
 
 
-class SongViewSet(viewsets.ModelViewSet):
-    queryset = Song.objects.all()
-    serializer_class = SongSerializer
-
-
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = ArtistProfile.objects.all()
     serializer_class = ArtistSerializer
@@ -24,9 +19,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q
 
-class SongViewSet(viewsets.ModelViewSet):
-    queryset = Song.objects.all()
-    serializer_class = SongSerializer
 
     @action(detail=False, methods=['get'])
     def search(self, request):
@@ -42,18 +34,26 @@ class SongViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
         
         
-@action(detail=False, methods=['get'])
-def trending(self, request):
-    songs = Song.objects.all().order_by('-plays', '-downloads')[:20]
-    serializer = self.get_serializer(songs, many=True)
-    return Response(serializer.data)
-    
-@action(detail=True, methods=['post'])
-def play(self, request, pk=None):
-    song = self.get_object()
-    song.plays += 1
-    song.save()
-    return Response({"message": "play recorded"})
+class SongViewSet(viewsets.ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = SongSerializer
+
+    @action(detail=False, methods=['get'])
+    def search(self, request):
+        ...
+
+    @action(detail=False, methods=['get'])
+    def trending(self, request):
+        songs = Song.objects.all().order_by('-plays', '-downloads')[:20]
+        serializer = self.get_serializer(songs, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'])
+    def play(self, request, pk=None):
+        song = self.get_object()
+        song.plays += 1
+        song.save()
+        return Response({"message": "play recorded"})
 
 from django.shortcuts import render
 
