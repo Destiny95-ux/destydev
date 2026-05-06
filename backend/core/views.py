@@ -54,3 +54,8 @@ def play(self, request, pk=None):
     song.plays += 1
     song.save()
     return Response({"message": "play recorded"})
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, "index.html")
