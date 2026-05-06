@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jambase Music</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">🎵 Jambase</div>
+
+    <input type="text" id="searchInput" placeholder="Search songs, artists..." />
+
+    <button class="btn">Upload</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Stream & Download Royalty-Free Music</h1>
+    <p>Discover trending African music, gospel, afrobeat & more.</p>
+    <button class="btn-primary">Explore Music</button>
+  </section>
+
+  <!-- SONG GRID -->
+  <section class="container">
+    <h2>🔥 Trending Songs</h2>
+
+    <div class="grid" id="songGrid">
+
+      <!-- CARD -->
+      <div class="card">
+        <img src="https://via.placeholder.com/300x300" />
+        <h3>Song Title</h3>
+        <p>Artist Name</p>
+
+        <div class="actions">
+          <button>▶ Play</button>
+          <button>⬇ Download</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x300" />
+        <h3>Afro Beat Vibes</h3>
+        <p>DJ Sample</p>
+
+        <div class="actions">
+          <button>▶ Play</button>
+          <button>⬇ Download</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Jambase Music Platform</p>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
